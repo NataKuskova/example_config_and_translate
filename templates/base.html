@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href='{% static "css/style.css" %}'>
+    <script type="text/javascript" src='{% static "js/jquery-3.1.0.min.js" %}'></script>
+    <script type="text/javascript" src='{% static "js/scripts.js" %}'></script>
+</head>
+<body>
+    <header>
+        {% if user.is_authenticated %}
+            <p>Добро пожаловать, <b>{{user}}</b></p>
+            <p  class="btn"><a href="/tea/logout/">Выход</a></p>
+        {% else %}
+            <p  class="btn"><a href="/tea/login/">Вход</a></p>
+            <p class="btn"><a href="/tea/register/">Регистрация</a></p>
+        {% endif %}
+        <a href="/tea/" class="main_link">Все товары</a>
+        <a href="/tea/cart/" class="cart">Корзина (<span id="number">{{cart.count}}</span>)</a>
+    </header>
+    {% block content %}
+
+    {% endblock %}
+
+    <div class="overlay"></div>
+    <div id="myModal" class="popup">
+	<div>
+		<a title="Закрыть" class="close_window">&#215;</a>
+		<p class="add_to_cart_popup">Товар добавлен в <a href="/tea/cart/">корзину</a>!</p>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}Каталог{% endblock %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+
+        <div class="add_product">
+            <a href="/tea/add_product/">
+                <img src='{% static "images/add-p.png" %}' alt=''>
+                Добавить новый товар
+            </a>
+        </div>
+
+        <a href="/tea/add_buyer/" class="add_buyer">Новый покупатель</a>
+    {% endif %}
+
+    <div class="filter form">
+        {% include 'sort_and_search.html' %}
+    </div>
+
+    <table class="products">
+        <thead>
+            <tr>
+                <td class="image">Изображение</td>
+                <td>Наименование товара</td>
+                <td>Цена за 50 грамм</td>
+                {% if user.is_authenticated %}
+                    <td>Количество</td>
+                {% else %}
+                    <td style="text-align: center;">Наличие</td>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% if products %}
+                {% for product in  products %}
+                    <tr class="hover_tr">
+                        <td class="image"><img src='{{ product.photo.url }}'></td>
+                        <td>
+                            <a class="name_product" href="/tea/product/{{product.id}}/">{{product.name}}</a>
+                        </td>
+                        <td>{{product.price}} грн</td>
+                        {% if user.is_authenticated %}
+                            <td>{{product.quantity}} гр</td>
+                        {% else %}
+                            {% if product.quantity > 0 %}
+                                <td class="existence"><img src='{% static "images/yes.png" %}' title="Есть в наличии"></td>
+                            {% else %}
+                                <td class="existence"><img src='{% static "images/no.png" %}' title="Нет в наличии"></td>
+                            {% endif %}
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+
+    {% if is_paginated %}
+        <div class="pagination">
+            <ul>
+                {% if page_obj.has_previous %}
+                    <li>
+                        <a href="/tea/page/{{ page_obj.previous_page_number }}{% if request.GET.urlencode %}?{{request.GET.urlencode }}{% endif %}">
+                            <<
+                        </a>
+                    </li>
+                {% endif %}
+                {% for page in page_obj.paginator.page_range %}
+                    {% if page_obj.number == page %}
+                        <li class="active">
+                            <a href="/tea/page/{{ page }}{% if request.GET.urlencode %}?{{request.GET.urlencode }}{% endif %}">
+                                {{page}}
+                            </a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="/tea/page/{{ page }}{% if request.GET.urlencode %}?{{request.GET.urlencode }}{% endif %}">
+                                {{page}}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <li>
+                        <a href="/tea/page/{{ page_obj.next_page_number }}{% if request.GET.urlencode %}?{{request.GET.urlencode }}{% endif %}">
+                            >>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+
+{% endblock %}

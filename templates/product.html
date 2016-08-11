@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+
+    {% if user.is_authenticated and user == product.user %}
+        <a href="update/" class="update">Редактировать</a>
+        <form action="{% url 'product_delete' product.id %}" method="post" class="delete">
+            {% csrf_token %}
+            <button type="submit">Удалить</button>
+        </form>
+    {% endif %}
+
+    <div class="product_overview">
+        <img src="{{ product.photo.url }}">
+        <div class="details">
+            <h1>{{ product.name }}</h1>
+            <p>Категория: {{ product.category }}</p>
+
+            {% if product.quantity > 0 %}
+                <p class="yes">Есть в наличии</p>
+            {% else %}
+                <p class="no">Нет в наличии</p>
+            {% endif %}
+
+            <!--<p id="link_product">{{request.build_absolute_uri}}</p>-->
+            <p>Цена: {{ product.price }} грн за 50 грамм</p>
+            {% if product.quantity >= 50  %}
+                <a href="add_to_cart/" class="add_to_cart_btn enabled">Купить</a>
+            {% else %}
+                <a href="" class="add_to_cart_btn disabled">Купить</a>
+            {% endif %}
+            <br><br>
+            {% if user.is_authenticated %}
+                <p>Количество: {{ product.quantity }}</p>
+            {% endif %}
+            <p>Товар добавил: {{product.user}}</p>
+
+        </div>
+    </div>
+{% endblock %}

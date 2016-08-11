@@ -1,0 +1,5 @@
+Django==1.9.8
+django-cart==1.0.4
+Pillow==3.3.0
+pkg-resources==0.0.0
+pytz==2016.6.1

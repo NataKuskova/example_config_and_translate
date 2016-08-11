@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}Новый пользователь{% endblock %}
+
+{% block content %}
+    <div class="form">
+        <form action="" method="post">{% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Сохранить" name="add_buyer" />
+        </form>
+    </div>
+{% endblock %}

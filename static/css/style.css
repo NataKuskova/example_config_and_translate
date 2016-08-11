@@ -1,0 +1,451 @@
+html, body, div, span, a, img, strong,
+b, u, i, ol, ul, li, form, label, table,
+tbody, thead, tr, th, td, article, aside,
+footer, header, menu, nav, h1,h2,h3, p{
+    margin: 0;
+	padding: 0;
+	border: 0;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+}
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body{
+    background: url(../images/back.jpg) no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+header{
+    /*background-color: #b4a977;*/
+    background-color: rgba(190, 181, 138, 0.7);
+    /*height: 50px;*/
+    padding: 10px 30px 20px 0;
+
+}
+header a,
+header p{
+    text-align: right;
+    text-decoration: none;
+    color: #4d321b;
+}
+.btn{
+    margin-top: 15px;
+}
+.btn a{
+    padding: 5px 20px;
+    font-size: 16px;
+    background-color: #b4a977;
+    -moz-transition: background-color 0.3s 0.1s ease;
+    -o-transition: background-color 0.3s 0.1s ease;
+    -webkit-transition: background-color 0.3s 0.1s ease;
+}
+.main_link{
+    position: absolute;
+    text-align: left;
+    top: 25px;
+    left: 30px;
+    background-color: #b4a977;
+    padding: 5px 20px;
+    font-size: 16px;
+    -moz-transition: background-color 0.3s 0.1s ease;
+    -o-transition: background-color 0.3s 0.1s ease;
+    -webkit-transition: background-color 0.3s 0.1s ease;
+}
+.main_link:hover,
+.btn a:hover,
+.add_product:hover,
+.delete button:hover,
+.update:hover,
+.filter button:hover,
+.cart_btn:hover,
+.add_buyer:hover,
+.cart:hover{
+    background-color: #CABE87;
+}
+.cart{
+    background-color: #b4a977;
+    padding: 5px 20px;
+    font-size: 16px;
+    -moz-transition: background-color 0.3s 0.1s ease;
+    -o-transition: background-color 0.3s 0.1s ease;
+    -webkit-transition: background-color 0.3s 0.1s ease;
+    position: absolute;
+    top: 25px;
+    left: 200px;
+}
+/*-----catalog-----*/
+.add_buyer{
+    background-color: #b4a977;
+    color: #4d321b;
+    font-size: 16px;
+    text-decoration: none;
+    -moz-transition: background-color 0.3s 0.1s ease;
+    -o-transition: background-color 0.3s 0.1s ease;
+    -webkit-transition: background-color 0.3s 0.1s ease;
+    padding: 5px 20px;
+    display: inline-block;
+    margin-left: 20px;
+}
+.products{
+    background-color: rgba(190, 181, 138, 0.7);
+    color: #4D321B;
+    margin: 30px;
+    width: 95%;
+    font-size: 15px;
+}
+.products thead{
+    background-color: #b4a977;
+    line-height: 25px;
+}
+.products .hover_tr{
+    -moz-transition: background-color 0.3s 0.1s ease;
+    -o-transition: background-color 0.3s 0.1s ease;
+    -webkit-transition: background-color 0.3s 0.1s ease;
+}
+.products .hover_tr:hover{
+    background-color: #b4a977;
+}
+.products input[type=text]{
+    width: 50px;
+}
+.existence{
+    text-align: center;
+}
+.existence img{
+    width: 20px;
+}
+.products td{
+    padding: 8px;
+    border: 1px solid #b4a977;
+}
+.image{
+    text-align: center;
+}
+.image img{
+    width: 70px;
+    height: 50px;
+}
+.name_product{
+    text-decoration: none;
+    color: #4D321B;
+}
+
+.pagination{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.pagination ul{
+    font-size:0; /* убираем горизонтальные отступы */
+    line-height:0; /* ...и вертикальные в некоторых браузерах */
+    letter-spacing:-1px; /* переубеждаем webkit'ы */
+}
+.pagination ul li{
+    display: inline-block;
+    letter-spacing: normal;
+    line-height: 20px;
+    font-size: 11.9px;
+}
+.pagination ul li:first-child a{
+    border-left-width: 1px;
+}
+.pagination ul li a{
+    background-color: rgba(190, 181, 138, 0.7);
+    border-color: #b4a977;
+    border-style: solid;
+    border-width: 1px 1px 1px 0;
+    color: #4d321b;
+    padding: 6px 10px;
+    text-decoration: none;
+    -moz-transition: background-color 0.3s 0.1s ease;
+    -o-transition: background-color 0.3s 0.1s ease;
+    -webkit-transition: background-color 0.3s 0.1s ease;
+}
+.pagination ul li a:hover,
+.pagination ul li a:focus,
+.pagination ul .active a{
+    background-color: #CABE87;
+}
+.pagination ul .active a{
+    cursor: default;
+}
+.filter{
+    width: 95%;
+    font-size: 16px;
+}
+.filter button{
+    border: none;
+    background-color: #b4a977;
+    padding: 4px 20px 5px;
+    color: #4d321b;
+    font-size: 16px;
+    cursor: pointer;
+    -moz-transition: background-color 0.3s 0.1s ease;
+    -o-transition: background-color 0.3s 0.1s ease;
+    -webkit-transition: background-color 0.3s 0.1s ease;
+    margin-left: 15px;
+}
+.filter input,
+.filter select{
+    padding: 4px;
+}
+.filter form{
+    height: 40px;
+}
+label[for='sort']{
+    margin-left: 15px;
+}
+
+/*-----product create-----*/
+.add_product{
+    font-size: 16px;
+    width: 230px;
+    margin: 20px 0 0 30px;
+    cursor: pointer;
+    background-color: #b4a977;
+    padding: 5px 5px 5px 10px;
+    -moz-transition: background-color 0.3s 0.1s ease;
+    -o-transition: background-color 0.3s 0.1s ease;
+    -webkit-transition: background-color 0.3s 0.1s ease;
+    display: inline-block;
+}
+.add_product a{
+    color: #4D321B;
+    text-decoration: none;
+}
+.add_product img{
+    margin-right: 5px;
+    width: 12px;
+}
+.form form p,
+.form{
+    text-align: center;
+}
+.form{
+    margin: 0 auto;
+    margin-top: 30px;
+    background-color: rgba(190, 181, 138, 0.7);
+    padding: 30px 0;
+    color: #4d321b;
+}
+.form input, select{
+    margin-bottom: 20px;
+}
+
+/*---product detail----*/
+.product_overview{
+    width: 95%;
+    margin: 30px;
+    background-color: rgba(190, 181, 138, 0.7);
+}
+.product_overview img{
+    margin: 30px;
+    width: 400px;
+    display: inline-block;
+}
+.details{
+    margin: 30px;
+    display: inline-block;
+    vertical-align: top;
+    max-width: 600px;
+    color: #4d321b;
+}
+.details h1{
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+.details p{
+    margin-bottom: 20px;
+}
+.delete{
+    margin: 30px 0 0 30px;
+    display: inline-block;
+}
+.delete button{
+    border: none;
+    background-color: #b4a977;
+    padding: 4px 20px 5px;
+    color: #4d321b;
+    font-size: 16px;
+    cursor: pointer;
+    -moz-transition: background-color 0.3s 0.1s ease;
+    -o-transition: background-color 0.3s 0.1s ease;
+    -webkit-transition: background-color 0.3s 0.1s ease;
+}
+.update{
+    margin: 30px 0 0 30px;
+    display: inline-block;
+    background-color: #b4a977;
+    padding: 5px 20px;
+    font-size: 16px;
+    -moz-transition: background-color 0.3s 0.1s ease;
+    -o-transition: background-color 0.3s 0.1s ease;
+    -webkit-transition: background-color 0.3s 0.1s ease;
+    color: #4d321b;
+    text-decoration: none;
+}
+.details .yes{
+    color: #008000;
+}
+.details .no{
+    color: #d20000;
+}
+.add_to_cart_btn.disabled{
+    background-color: #616b60;
+    cursor: default;
+}
+.add_to_cart_btn{
+    text-decoration: none;
+    padding: 8px 50px;
+    font-size: 16px;
+    background-color: #3a6d35;
+    color: #fff;
+    -moz-transition: background-color 0.3s 0.1s ease;
+    -o-transition: background-color 0.3s 0.1s ease;
+    -webkit-transition: background-color 0.3s 0.1s ease;
+}
+.add_to_cart_btn.enabled:hover{
+    background-color: #478a41;
+}
+/*
+input[type=radio].css-checkbox {
+    position:absolute;
+    z-index:-1000;
+    left:-1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height:1px;
+    width:1px;
+    margin:-1px;
+    padding:0;
+    border:0;
+}
+input[type=radio].css-checkbox + label.css-label {
+    padding-left:21px;
+    height:16px;
+    display:inline-block;
+    line-height:16px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-size:16px;
+    vertical-align:middle;
+    cursor:pointer;
+    margin-bottom: 7px;
+}
+input[type=radio].css-checkbox:checked + label.css-label {
+    background-position: 0 -16px;
+}
+label.css-label {
+    background-image:url(../images/radio.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#link_product {
+    display: none;
+}*/
+.add_to_cart_popup{
+    font-family: Comic Sans MS;
+    font-size: 15px;
+}
+.add_to_cart_popup a{
+    color: #4D321B;
+    font-weight: bold;
+}
+.overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    cursor: default;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    visibility: hidden;
+    z-index: 99999;
+		-webkit-transition: opacity .5s;
+		-moz-transition: opacity .5s;
+		-ms-transition: opacity .5s;
+		-o-transition: opacity .5s;
+		transition: opacity .5s;
+}
+.popup {
+	background-color: rgba(190, 181, 138, 1);
+	border: 3px solid #b4a977;
+	display: inline-block;
+	left: 50%;
+	opacity: 0;
+	padding: 15px;
+	width: 230px;
+	/*height: 323px;*/
+	position: fixed;
+	text-align: center;
+	top: 45%;
+	visibility: hidden;
+	z-index: 999999;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	-webkit-transition: opacity .5s, top .5s;
+	-moz-transition: opacity .5s, top .5s;
+	-ms-transition: opacity .5s, top .5s;
+	-o-transition: opacity .5s, top .5s;
+	transition: opacity .5s, top .5s;
+	/*border-radius: 11px;*/
+    padding: 30px 40px 34px;
+}
+.popup .close_window {
+	font-size: 22px;
+	line-height: .5;
+	position: absolute;
+	top: 8px;
+	right: 11px;
+	color: #aaa;
+	text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+	font-weight: bold;
+	cursor: pointer;
+}
+/*------------cart--------*/
+.summary{
+    font-size: 18px;
+    margin-bottom: 35px;
+}
+.summary span{
+    font-weight: bold;
+}
+.cart_btn{
+    background-color: #b4a977;
+    color: #4d321b;
+    font-size: 16px;
+    text-decoration: none;
+    -moz-transition: background-color 0.3s 0.1s ease;
+    -o-transition: background-color 0.3s 0.1s ease;
+    -webkit-transition: background-color 0.3s 0.1s ease;
+    padding: 5px 20px;
+    border: none;
+    cursor: pointer;
+}
+.delete_prod{
+    width: 20px;
+}
+/*-------order---------*/
+.not_available{
+    color: #d20000;
+    margin-bottom: 20px;
+}
+.not_available span{
+    font-weight: bold;
+}
+.success{
+    color: #008000;
+}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Оформление заказа{% endblock %}
+
+{% block content %}
+
+<div class="form">
+    <h1>Оформление заказа</h1>
+    <br>
+    {% if not cart.count %}
+        <p class="success">Ваш заказ успешно оформлен, спасибо за покупку!</p>
+    {% elif product %}
+        {% for prod in product %}
+            <p class="not_available">Товара <span>{{prod.name}}</span> на складе осталось <span>{{prod.quantity}}</span> грамм.</p>
+        {% endfor %}
+    {% else %}
+        <form action="" method="post">{% csrf_token %}
+            <table class="products">
+                <thead>
+                    <tr>
+                        <td>Наименование</td>
+                        <td>Цена (грн)</td>
+                        <td>Количество</td>
+                        <td>Сумма (грн)</td>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in cart %}
+                    <tr class="hover_tr">
+                        <td>{{item.product.name}} (50гр)</td>
+                        <td>{{item.product.price}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{ item.total_price }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <p class="summary">Общая сумма: <span>{{cart.summary}}</span> грн</p>
+
+            <label for="{{form.name.id_for_label}}">Имя: </label>
+            {{form.name}}
+            <br>
+            <label for="{{form.surname.id_for_label}}">Фамилия: </label>
+            {{form.surname}}
+            <br>
+            <label for="{{form.address.id_for_label}}">Город: </label>
+            {{form.address}}
+            <br>
+            <label for="{{form.phone.id_for_label}}">Телефон: </label>
+            {{form.phone}}
+            <br>
+            <label for="{{form.email.id_for_label}}">E-mail: </label>
+            {{form.email}}
+            <br>
+            <input type="submit" name="order" value="Заказать" class="cart_btn">
+        </form>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Новый товар{% endblock %}
+
+{% block content %}
+    <div class="form">
+        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+            <label for="{{ form.name.id_for_label }}">Наименование: </label>
+            {{ form.name }}<br>
+            <label for="{{ form.category.id_for_label }}">Категория: </label>
+            {{ form.category }}<br>
+            <label for="{{ form.price.id_for_label }}">Цена: </label>
+            {{ form.price }}<br>
+            <label for="{{ form.quantity.id_for_label }}">Количество: </label>
+            {{ form.quantity }}<br>
+            <label for="{{ form.photo.id_for_label }}">Фотография: </label>
+            {{ form.photo }}
+            <br><br>
+            <input type="submit" value="Сохранить" name="add_product" />
+        </form>
+    </div>
+{% endblock %}

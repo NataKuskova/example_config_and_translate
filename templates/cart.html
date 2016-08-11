@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}Корзина товаров{% endblock %}
+
+{% block content %}
+
+<div class="form">
+    <h1>Корзина товаров</h1>
+    <br>
+    {% if not cart.count %}
+        <p>Ваша корзина товаров пуста.</p>
+    {% else %}
+        <form action="update/" method="post">{% csrf_token %}
+            <table class="products">
+                <thead>
+                    <tr>
+                        <td>Наименование</td>
+                        <td>Цена (грн)</td>
+                        <td>Количество</td>
+                        <td>Сумма (грн)</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in cart %}
+                    <tr class="hover_tr">
+                        <td>{{item.product.name}} (50гр)</td>
+                        <td>{{item.product.price}}</td>
+                        <td>
+                            <input type="text" name="q_{{item.product.id}}" id="quantity" value="{{item.quantity}}">
+                        </td>
+                        <td>{{ item.total_price }}</td>
+                        <td>
+                            <a href="delete/{{item.product.id}}/"><img src='{% static "images/no.png" %}' class="delete_prod" title="Удалить"></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <p class="summary">Общая сумма: <span>{{cart.summary}}</span> грн</p>
+            <a href="clear/" class="cart_btn">Очистить корзину</a>
+            <input type="submit" name="update" value="Обновить" class="cart_btn">
+
+        </form>
+
+        <a href="/tea/order/"  class="cart_btn">Оформить заказ</a>
+    {% endif %}
+</div>
+{% endblock %}

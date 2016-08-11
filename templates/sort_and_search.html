@@ -1,0 +1,19 @@
+<form action='{% url "products_list" %}' method="GET">
+    <label for="search">Поиск:</label>
+    <input type="text" id="search" name="search" value='{{request.GET.search}}'/>
+
+    <label for="sort">Сортировать по:</label>
+    <select name="sort" id="sort">
+        <option value="name" {% if request.GET.sort == 'name' %}selected{% endif %}>Наименованию</option>
+        <option value="price" {% if request.GET.sort == 'price' %}selected{% endif %}>Цене</option>
+        <option value="quantity" {% if request.GET.sort == 'quantity' %}selected{% endif %}>Количеству</option>
+    </select>
+    <select name="by">
+        <option value="" {% if request.GET.by == '' %}selected{% endif %}>По возрастанию</option>
+        <option value="-" {% if request.GET.by == '-' %}selected{% endif %}>По убыванию</option>
+    </select>
+
+    <button type="submit">Поиск</button>
+</form>
+
+
